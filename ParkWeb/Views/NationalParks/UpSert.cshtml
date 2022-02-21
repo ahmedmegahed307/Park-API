@@ -1,0 +1,99 @@
+﻿@model ParkWeb.Models.Park
+@{
+    var title = "Create National Park";
+}
+<form method="post" asp-action="UpSert" enctype="multipart/form-data">
+
+    <div class="row px-2 mx-2 backgroundWhite border">
+        <div asp-validation-summary="ModelOnly" class="text-danger">
+
+        </div>
+        @if(Model.NationalParkId!=0)
+        {
+            <input  type="hidden" asp-for="NationalParkId"/>
+            title = "Edit Park";
+        }
+        <div class="col-12 p-3">
+            <h2 class="text-primary">@title</h2>
+        </div>
+        <div class="col-8">
+            <div class="form-group row">
+                <div class="col-4">
+                    <label asp-for="ParkName"></label>
+                </div>
+                <div class="col-8">
+                    <input asp-for="ParkName" class="form-control" />
+                    <span asp-validation-for="ParkName" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-4">
+                    <label asp-for="State"></label>
+                </div>
+                <div class="col-8">
+                    <input asp-for="State" class="form-control" />
+                    <span asp-validation-for="State" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-4">
+                    <label asp-for="ParkImage"></label>
+                </div>
+                <div class="col-8">
+                    <input type="file" asp-for="ParkImage" id="projectimage" name="files"
+                           multiple class="form-control" />
+
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-4">
+                    <label asp-for="Etablished"></label>
+                </div>
+                <div class="col-8">
+                    @{ 
+                        var DateEst = "";
+                        if(Model.NationalParkId!=0)
+                        {
+                            DateEst = Model.Etablished.ToShortDateString();
+                        }
+                    }
+                    <input id="datepicker" value="@DateEst" type="text" asp-for="@Model.Etablished" class="form-control" />
+                   
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <div class="col-4 offset-4">
+                    <button type="submit" class="btn btn-primary form-control">
+                        @(Model.NationalParkId!=0?"Update":"Create")
+
+                    </button>
+                </div>
+                <div class="col-4">
+                    <a asp-action="Index" class="btn btn-success form-control">Back to List</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-4 text-right" style="width:250px;">
+            @if (Model.ParkImage != null)
+            {
+                var base64 = Convert.ToBase64String(Model.ParkImage);
+                var imgsrc = string.Format("data:image/jpg;base64,{0}", base64);
+            <img src="@imgsrc" width="100%" />
+            }
+        </div>
+    </div>
+
+</form>
+@section scripts{
+<script >
+    $(function () {
+
+        $('#datepicker').datepicker({
+            changeMonth: true,
+            changeYear: true,
+            yearRange: "1500:2022"
+        });
+    })
+</script>
+ }

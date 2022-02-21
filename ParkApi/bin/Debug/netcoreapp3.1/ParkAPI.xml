@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>ParkAPI</name>
+    </assembly>
+    <members>
+        <member name="M:ParkAPI.Controllers.ParkController.GetAllParks">
+            <summary>
+             Get List of all Parks
+            </summary>   
+            <returns></returns>
+        </member>
+        <member name="M:ParkAPI.Controllers.ParkController.GetOnePark(System.Int32)">
+            <summary>
+            Get Individual park by id 
+            </summary>
+            <param name="id">Id of the park</param>
+            <returns></returns>
+            
+        </member>
+        <member name="M:ParkAPI.Controllers.ParkVersion2Controller.GetAllParks">
+            <summary>
+             Get List of all Parks
+            </summary>   
+            <returns></returns>
+        </member>
+        <member name="M:ParkAPI.Controllers.TrailController.GetAllTrails">
+            <summary>
+             Get List of all Trails
+            </summary>   
+            <returns></returns>
+        </member>
+        <member name="M:ParkAPI.Controllers.TrailController.GetOneTrail(System.Int32)">
+            <summary>
+            Get Individual trail by id 
+            </summary>
+            <param name="id">Id of the trail</param>
+            <returns></returns>
+            
+        </member>
+    </members>
+</doc>
